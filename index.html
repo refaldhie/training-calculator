@@ -338,10 +338,10 @@ const MODES = {
     label: "Private · Online",
     hasTier: true, hasPax: false,
     defaultJam: 8,
+    // Sumber: Excel Contoh_Private — Direct: Honor Pengajar + Marketing Activation (10% DPP)
+    // Overhead online: hanya platform (tidak ada room/equipment/kit karena online)
     overheadPerJam: {
-      "Platform (Zoom/Meet)":   { val: 10000, note: "Biaya sewa platform per jam sesi" },
-      "Staff Operasional":      { val: 5000,  note: "Alokasi jam kerja staf koordinasi & komunikasi" },
-      "Kit Digital":            { val: 2000,  note: "Amortisasi modul PDF/slides per jam" },
+      "Platform (Zoom/Meet)":   { val: 10000, note: "Estimasi biaya platform per jam sesi (Zoom/Meet)" },
     },
     fixedCost: {},
     mktgMode: "pct_dpp", mktgPct: 10,
@@ -351,29 +351,32 @@ const MODES = {
     label: "Private · Offline",
     hasTier: true, hasPax: false,
     defaultJam: 12,
+    // Sumber: Excel Contoh_Private — Indirect: Room Rent, Equipment Rental, Private Kit, Administration
+    // Administration (Paperwork, ATK, Komunikasi) = 2% DPP → dimasukkan sebagai overhead/sesi estimasi
     overheadPerJam: {
-      "Room Rent":              { val: 150000, note: "Sewa ruang kelas per jam" },
-      "Equipment Rental":       { val: 75000,  note: "Sewa peralatan/laptop per jam" },
-      "Staff Operasional":      { val: 5000,   note: "Alokasi jam kerja staf koordinasi & koordinasi lapangan" },
-      "Kit Fisik":              { val: 15000,  note: "Amortisasi buku, modul cetak, ATK per jam" },
-      "Transport Pengajar":     { val: 12500,  note: "Rp 100rb/hari ÷ 8 jam efektif" },
+      "Room Rent / Facility":   { val: 200000, note: "Sewa ruang per sesi. Dari Excel: Rp 200.000/sesi (di IDS)" },
+      "Equipment Rental":       { val: 250000, note: "Sewa peralatan per sesi jika diperlukan. Dari Excel: Rp 250.000/sesi" },
+      "Private Kit":            { val: 8333,   note: "Kit peserta per jam. Dari Excel: Rp 100.000 total ÷ 12 sesi" },
+      "Administration":         { val: 5000,   note: "Paperwork, ATK, Komunikasi. Dari Excel: 2% DPP (diestimasi per jam)" },
     },
     fixedCost: {},
     mktgMode: "pct_dpp", mktgPct: 10,
     jamQuick: [4,8,12,16,24,36], paxQuick: [],
+    noteUnit: "sesi",
   },
   "corp-online": {
     label: "Corporate · Online",
     hasTier: true, hasPax: true,
     defaultJam: 8, defaultPax: 15,
+    // Overhead online: hanya platform. Marketing & Kit masuk fixedCost
     overheadPerJam: {
-      "Platform (Zoom/Meet)":   { val: 10000, note: "Biaya platform per jam" },
-      "Staff Operasional":      { val: 5000,  note: "Alokasi staf koordinasi & follow-up klien" },
-      "Kit Digital":            { val: 2000,  note: "Materi digital per jam" },
+      "Platform (Zoom/Meet)":   { val: 10000, note: "Estimasi biaya platform per jam sesi" },
     },
     fixedCost: {
-      "Marketing/program":      { val: 1500000, note: "Biaya promosi & proposal per program" },
+      "Marketing Activation":   { val: 1500000, note: "Biaya promosi & proposal per program. Referensi Excel: 10% DPP" },
       "Moderator/program":      { val: 500000,  note: "Honor moderator satu program" },
+      "Kit Peserta":            { val: 100000,  note: "Kit per peserta × jumlah peserta (dihitung otomatis)" },
+      "Administration":         { val: 500000,  note: "Paperwork, ATK, Komunikasi per program. Referensi Excel: 2% DPP" },
     },
     mktgMode: "none",
     jamQuick: [4,6,8,16,24], paxQuick: [5,10,15,20,25],
@@ -383,17 +386,16 @@ const MODES = {
     hasTier: true, hasPax: true,
     defaultJam: 8, defaultPax: 15,
     overheadPerJam: {
-      "Room Rent":              { val: 150000, note: "Sewa ruang kelas per jam" },
-      "Equipment Rental":       { val: 75000,  note: "Sewa alat per jam" },
-      "Staff Operasional":      { val: 5000,   note: "Alokasi staf koordinasi lapangan & klien" },
-      "Kit Fisik":              { val: 15000,  note: "Materi cetak, ATK per jam" },
-      "Transport Pengajar":     { val: 12500,  note: "Rp 100rb/hari ÷ 8 jam" },
+      "Room Rent / Facility":   { val: 200000, note: "Sewa ruang per sesi. Dari Excel: Rp 200.000/sesi" },
+      "Equipment Rental":       { val: 250000, note: "Sewa peralatan per sesi. Dari Excel: Rp 250.000/sesi" },
     },
     fixedCost: {
-      "Marketing/program":      { val: 2000000, note: "Biaya promosi & proposal" },
-      "Moderator/program":      { val: 500000,  note: "Honor moderator" },
+      "Marketing Activation":   { val: 2000000, note: "Biaya promosi & proposal. Dari Excel: 10% DPP" },
+      "Moderator/program":      { val: 500000,  note: "Honor moderator satu program" },
+      "Kit Peserta":            { val: 100000,  note: "Kit per peserta. Dari Excel: Rp 100.000/pax" },
+      "Administration":         { val: 700000,  note: "Paperwork, ATK, Komunikasi. Dari Excel: 2% DPP" },
       "Transportasi PP":        { val: 5000000, note: "Tiket pesawat/transport pulang-pergi" },
-      "Akomodasi":              { val: 1200000, note: "Hotel 2 malam × Rp 600rb" },
+      "Akomodasi":              { val: 1200000, note: "Hotel 2 malam x Rp 600rb" },
     },
     mktgMode: "none",
     jamQuick: [4,6,8,16], paxQuick: [5,10,15,20],
@@ -402,12 +404,13 @@ const MODES = {
     label: "Short Course · Retail",
     hasTier: false, hasPax: true,
     defaultJam: 8, defaultPax: 50,
+    // Overhead per jam hanya platform — tidak ada room/equipment karena online
     overheadPerJam: {
-      "Platform (Zoom/Meet)":   { val: 10000, note: "Platform per jam sesi" },
-      "Staff Operasional":      { val: 5000,  note: "Alokasi staf registrasi & support peserta" },
+      "Platform (Zoom/Meet)":   { val: 10000, note: "Biaya platform per jam sesi" },
     },
     fixedCost: {
-      "Pengajar/program":       { val: 2000000, note: "Honor trainer satu batch" },
+      "Honor Pengajar":         { val: 2000000, note: "Honor trainer satu batch program" },
+      "Admin Staff":            { val: 500000,  note: "Honorarium/alokasi staf admin: registrasi peserta, koordinasi teknis, komunikasi, sertifikat" },
       "Digital Marketing":      { val: 2500000, note: "Iklan sosmed, content creation" },
       "Webinar Ads":            { val: 700000,  note: "Boosting & promotion material" },
     },
