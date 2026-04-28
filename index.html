@@ -9,402 +9,213 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --cream:    #f9f5ef;
-  --paper:    #f2ece2;
-  --white:    #ffffff;
-  --ink:      #1c1710;
-  --ink2:     #5c5040;
-  --ink3:     #a09080;
-  --rule:     #ddd5c5;
-  --red:      #b83020;
-  --gold:     #c98a10;
-  --teal:     #1a6b5a;
-  --blue:     #1a3d6b;
-  --shadow:   rgba(28,23,16,0.10);
-  --serif:    'DM Serif Display', Georgia, serif;
-  --sans:     'DM Sans', sans-serif;
-  --mono:     'DM Mono', monospace;
+  --cream:  #f9f5ef;
+  --paper:  #f2ece2;
+  --white:  #ffffff;
+  --ink:    #1c1710;
+  --ink2:   #5c5040;
+  --ink3:   #a09080;
+  --rule:   #ddd5c5;
+  --red:    #b83020;
+  --gold:   #c98a10;
+  --teal:   #1a6b5a;
+  --blue:   #1a3d6b;
+  --purple: #5a2d82;
+  --shadow: rgba(28,23,16,0.10);
+  --serif:  'DM Serif Display', Georgia, serif;
+  --sans:   'DM Sans', sans-serif;
+  --mono:   'DM Mono', monospace;
 }
 
 html { scroll-behavior: smooth; }
-body {
-  font-family: var(--sans);
-  background: var(--cream);
-  color: var(--ink);
-  min-height: 100vh;
-}
+body { font-family: var(--sans); background: var(--cream); color: var(--ink); min-height: 100vh; }
 
 /* ── MASTHEAD ── */
 .masthead {
   background: var(--ink);
   padding: 36px 48px 32px;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
   border-bottom: 3px solid var(--gold);
 }
 .masthead::after {
   content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    -55deg,
-    transparent,
-    transparent 40px,
-    rgba(255,255,255,0.015) 40px,
-    rgba(255,255,255,0.015) 41px
-  );
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(-55deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
   pointer-events: none;
 }
-.masthead-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  position: relative; z-index: 1;
-}
-.masthead-kicker {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 8px;
-}
-.masthead h1 {
-  font-family: var(--serif);
-  font-size: clamp(26px, 3.5vw, 44px);
-  color: #fff;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-}
+.masthead-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; position: relative; z-index: 1; }
+.masthead-kicker { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.masthead h1 { font-family: var(--serif); font-size: clamp(26px,3.5vw,44px); color: #fff; line-height: 1.1; letter-spacing: -0.5px; }
 .masthead h1 em { color: var(--gold); font-style: italic; }
-.masthead-tag {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: #6a5e50;
-  text-align: right;
-  white-space: nowrap;
-}
-.masthead-desc {
-  font-size: 13px;
-  color: #8a7a6a;
-  max-width: 560px;
-  line-height: 1.65;
-  position: relative; z-index: 1;
-}
+.masthead-tag { font-family: var(--mono); font-size: 10px; color: #6a5e50; text-align: right; white-space: nowrap; }
+.masthead-desc { font-size: 13px; color: #8a7a6a; max-width: 560px; line-height: 1.65; position: relative; z-index: 1; }
 .masthead-formula {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 16px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 6px;
-  padding: 10px 18px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: #d4c8b8;
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 16px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 6px; padding: 10px 18px;
+  font-family: var(--mono); font-size: 11px; color: #d4c8b8;
   position: relative; z-index: 1;
 }
 .masthead-formula span { color: var(--gold); font-weight: 500; }
 
 /* ── LAYOUT ── */
-.app {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 0;
-  min-height: calc(100vh - 160px);
-}
+.app { display: grid; grid-template-columns: 370px 1fr; min-height: calc(100vh - 180px); }
 
 /* ── SIDEBAR ── */
 .sidebar {
-  background: var(--paper);
-  border-right: 1px solid var(--rule);
-  padding: 32px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
+  background: var(--paper); border-right: 1px solid var(--rule);
+  padding: 28px 24px; display: flex; flex-direction: column; gap: 20px;
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
 }
-.sidebar-title {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--ink3);
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--rule);
-}
+.sidebar-title { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink3); padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
 
-/* Field */
 .field { display: flex; flex-direction: column; gap: 6px; }
-.field-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--ink3);
-}
+.field-label { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink3); }
 .field-hint { font-size: 11px; color: var(--ink3); margin-top: 2px; font-style: italic; }
 
 select, input[type=number] {
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink);
-  background: var(--white);
-  border: 1.5px solid var(--rule);
-  border-radius: 6px;
-  padding: 10px 12px;
-  outline: none;
-  width: 100%;
-  appearance: none;
-  -webkit-appearance: none;
-  cursor: pointer;
+  font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--ink);
+  background: var(--white); border: 1.5px solid var(--rule); border-radius: 6px;
+  padding: 10px 12px; outline: none; width: 100%;
+  appearance: none; -webkit-appearance: none; cursor: pointer;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
-select:focus, input[type=number]:focus {
-  border-color: var(--ink);
-  box-shadow: 0 0 0 3px rgba(28,23,16,0.06);
-}
+select:focus, input[type=number]:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(28,23,16,0.06); }
 .sel-wrap { position: relative; }
-.sel-wrap::after {
-  content: '▾';
-  position: absolute;
-  right: 12px; top: 50%;
-  transform: translateY(-50%);
-  color: var(--ink3);
-  font-size: 11px;
-  pointer-events: none;
-}
+.sel-wrap::after { content: '▾'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--ink3); font-size: 11px; pointer-events: none; }
 
 /* Slider */
 .slider-field { display: flex; flex-direction: column; gap: 8px; }
 .slider-top { display: flex; justify-content: space-between; align-items: baseline; }
-.slider-num {
-  font-family: var(--serif);
-  font-size: 28px;
-  color: var(--ink);
-  line-height: 1;
-}
+.slider-num { font-family: var(--serif); font-size: 28px; color: var(--ink); line-height: 1; }
 .slider-unit { font-size: 11px; color: var(--ink3); margin-left: 3px; }
-input[type=range] {
-  -webkit-appearance: none;
-  width: 100%; height: 3px;
-  background: var(--rule); border-radius: 3px; outline: none; cursor: pointer;
-}
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px; height: 18px; border-radius: 50%;
-  background: var(--ink); border: 3px solid var(--paper);
-  box-shadow: 0 0 0 1.5px var(--ink);
-}
+input[type=range] { -webkit-appearance: none; width: 100%; height: 3px; background: var(--rule); border-radius: 3px; outline: none; cursor: pointer; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--ink); border: 3px solid var(--paper); box-shadow: 0 0 0 1.5px var(--ink); }
 .quick-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
-.pill {
-  font-family: var(--mono);
-  font-size: 10px;
-  padding: 3px 9px;
-  border-radius: 20px;
-  border: 1px solid var(--rule);
-  background: var(--white);
-  color: var(--ink2);
-  cursor: pointer;
-  transition: all 0.12s;
-}
+.pill { font-family: var(--mono); font-size: 10px; padding: 3px 9px; border-radius: 20px; border: 1px solid var(--rule); background: var(--white); color: var(--ink2); cursor: pointer; transition: all 0.12s; }
 .pill:hover { border-color: var(--ink2); }
 .pill.on { background: var(--ink); color: #fff; border-color: var(--ink); }
 
-/* Cost inputs mini-grid */
+/* Cost section */
 .cost-section { display: flex; flex-direction: column; gap: 10px; }
-.cost-sec-title {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--ink3);
-  display: flex; align-items: center; gap: 6px;
-}
+.cost-sec-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink3); display: flex; align-items: center; gap: 6px; }
 .cost-sec-title::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
 .cost-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .cost-item { display: flex; flex-direction: column; gap: 4px; }
-.cost-item label {
-  font-family: var(--mono);
-  font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink3);
-}
-.cost-item input {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--blue);
-  padding: 7px 10px;
-}
+.cost-item label { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink3); }
+.cost-item input { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--blue); padding: 7px 10px; }
 
-/* GM slider colors */
+/* New program dynamic items */
+.new-items-list { display: flex; flex-direction: column; gap: 6px; }
+.new-item-row { display: grid; grid-template-columns: 1fr auto 80px auto; gap: 6px; align-items: center; }
+.new-item-row input[type=text] { font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--ink); background: var(--white); border: 1.5px solid var(--rule); border-radius: 6px; padding: 7px 10px; outline: none; transition: border-color 0.15s; }
+.new-item-row input[type=text]:focus { border-color: var(--ink); }
+.new-item-row input[type=number] { font-size: 11px; padding: 7px 6px; }
+.new-item-type { font-family: var(--mono); font-size: 9px; color: var(--ink3); white-space: nowrap; }
+.del-btn { background: none; border: 1px solid var(--rule); border-radius: 4px; color: var(--ink3); font-size: 12px; cursor: pointer; padding: 4px 7px; transition: all 0.12s; line-height: 1; }
+.del-btn:hover { border-color: var(--red); color: var(--red); }
+.add-btn { display: flex; align-items: center; gap: 6px; background: none; border: 1.5px dashed var(--rule); border-radius: 6px; padding: 8px 12px; color: var(--ink3); font-size: 12px; cursor: pointer; font-family: var(--sans); transition: all 0.15s; width: 100%; justify-content: center; margin-top: 4px; }
+.add-btn:hover { border-color: var(--ink2); color: var(--ink2); }
+
 .gm-low  { color: var(--red); }
 .gm-mid  { color: var(--gold); }
 .gm-high { color: var(--teal); }
 
-/* ── MAIN CONTENT ── */
+/* ── MAIN ── */
 .main { padding: 36px 40px 80px; display: flex; flex-direction: column; gap: 28px; }
 
-/* Result card */
-.result-hero {
-  background: var(--ink);
-  border-radius: 12px;
-  padding: 32px 36px;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-}
-.result-hero::before {
-  content: '';
-  position: absolute;
-  width: 200px; height: 200px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,138,16,0.15) 0%, transparent 70%);
-  top: -60px; right: -40px;
-  pointer-events: none;
-}
-.result-hero::after {
-  content: attr(data-mode);
-  position: absolute;
-  bottom: -10px; right: 24px;
-  font-family: var(--serif);
-  font-size: 72px;
-  color: rgba(255,255,255,0.04);
-  line-height: 1;
-  pointer-events: none;
-  white-space: nowrap;
-}
-.result-label {
-  font-family: var(--mono);
-  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-  color: #7a6a58; margin-bottom: 6px;
-}
-.result-price {
-  font-family: var(--serif);
-  font-size: clamp(40px, 5vw, 64px);
-  color: #fff;
-  line-height: 1;
-  letter-spacing: -1px;
-  margin-bottom: 4px;
-}
+/* Result hero */
+.result-hero { background: var(--ink); border-radius: 12px; padding: 32px 36px; color: #fff; position: relative; overflow: hidden; }
+.result-hero::before { content: ''; position: absolute; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(201,138,16,0.15) 0%, transparent 70%); top: -60px; right: -40px; pointer-events: none; }
+.result-hero::after { content: attr(data-mode); position: absolute; bottom: -10px; right: 24px; font-family: var(--serif); font-size: 72px; color: rgba(255,255,255,0.04); line-height: 1; pointer-events: none; white-space: nowrap; }
+.result-hero.new-prog::before { background: radial-gradient(circle, rgba(90,45,130,0.20) 0%, transparent 70%); }
+.result-label { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #7a6a58; margin-bottom: 6px; }
+.result-price { font-family: var(--serif); font-size: clamp(40px,5vw,64px); color: #fff; line-height: 1; letter-spacing: -1px; margin-bottom: 4px; }
 .result-price sup { font-size: 20px; vertical-align: top; margin-top: 10px; display: inline-block; color: var(--gold); }
 .result-price sub { font-family: var(--sans); font-size: 14px; color: #7a6a58; font-weight: 300; }
 .result-sub { font-size: 13px; color: #7a6a58; margin-bottom: 28px; }
 .result-sub strong { color: #c8b89a; }
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-.metric {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
-  padding: 12px 14px;
-}
-.metric-lbl {
-  font-family: var(--mono);
-  font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
-  color: #7a6a58; margin-bottom: 6px;
-}
+.metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.metric { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 14px; }
+.metric-lbl { font-family: var(--mono); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: #7a6a58; margin-bottom: 6px; }
 .metric-val { font-family: var(--mono); font-size: 14px; font-weight: 500; color: #fff; }
 .metric-val.g { color: #5ee8a0; }
 .metric-val.a { color: var(--gold); }
 .metric-val.r { color: #ff8a80; }
 
-/* Breakdown */
-.breakdown {
-  background: var(--white);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px var(--shadow);
-}
-.breakdown-head {
-  padding: 14px 24px;
-  border-bottom: 1px solid var(--rule);
-  font-family: var(--mono);
-  font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink3);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.breakdown-head span { font-size: 11px; color: var(--ink2); font-family: var(--sans); letter-spacing: 0; text-transform: none; }
-.brow {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 11px 24px;
-  border-bottom: 1px solid #f0ece6;
-  font-size: 13px;
-  transition: background 0.1s;
-}
-.brow:last-child { border: none; }
-.brow:hover { background: var(--cream); }
-.brow-lbl { color: var(--ink2); display: flex; align-items: center; gap: 8px; }
-.brow-lbl .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.brow-val { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--ink); }
-.brow.subtotal { background: var(--paper); }
-.brow.subtotal .brow-lbl { font-weight: 600; color: var(--ink); }
-.brow.subtotal .brow-val { font-size: 13px; }
-.brow.profit .brow-val { color: var(--teal); }
-.brow.revenue-row .brow-val { color: var(--blue); font-size: 13px; }
-
-/* Bar visual */
-.bar-card {
-  background: var(--white);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 12px var(--shadow);
-}
-.bar-card-title {
-  font-family: var(--mono);
-  font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink3);
-  margin-bottom: 20px;
-}
+/* Bar chart */
+.bar-card { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px var(--shadow); }
+.bar-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink3); margin-bottom: 20px; }
 .bars { display: flex; flex-direction: column; gap: 14px; }
 .bar-row { display: flex; flex-direction: column; gap: 5px; }
-.bar-meta { display: flex; justify-content: space-between; }
+.bar-meta { display: flex; justify-content: space-between; align-items: baseline; }
 .bar-name { font-size: 12px; font-weight: 500; color: var(--ink2); }
 .bar-amt { font-family: var(--mono); font-size: 11px; color: var(--ink); }
 .bar-track { height: 8px; background: var(--paper); border-radius: 8px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 8px; transition: width 0.5s cubic-bezier(0.16,1,0.3,1); }
 
-/* Insight */
-.insight {
-  border-radius: 10px;
-  padding: 16px 20px;
+/* Breakdown */
+.breakdown { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px var(--shadow); }
+.breakdown-head { padding: 14px 24px; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink3); display: flex; align-items: center; justify-content: space-between; }
+.breakdown-head span { font-size: 11px; color: var(--ink2); font-family: var(--sans); letter-spacing: 0; text-transform: none; }
+
+/* brow: 4 columns now — dot+label | value | pct-bar | pct-label */
+.brow {
+  display: grid;
+  grid-template-columns: 1fr auto 120px 52px;
+  align-items: center;
+  padding: 10px 24px;
+  border-bottom: 1px solid #f0ece6;
   font-size: 13px;
-  line-height: 1.7;
-  display: none;
+  gap: 12px;
+  transition: background 0.1s;
 }
+.brow:last-child { border: none; }
+.brow:hover { background: var(--cream); }
+.brow-lbl { color: var(--ink2); display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.brow-lbl .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.brow-val { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--ink); text-align: right; white-space: nowrap; }
+.brow-bar-wrap { height: 5px; background: var(--paper); border-radius: 5px; overflow: hidden; }
+.brow-bar-fill { height: 100%; border-radius: 5px; transition: width 0.4s ease; }
+.brow-pct { font-family: var(--mono); font-size: 10px; color: var(--ink3); text-align: right; white-space: nowrap; }
+
+.brow.subtotal { background: var(--paper); }
+.brow.subtotal .brow-lbl { font-weight: 700; color: var(--ink); font-size: 13px; }
+.brow.subtotal .brow-val { font-size: 13px; font-weight: 700; }
+.brow.subtotal .brow-pct { color: var(--ink2); font-weight: 600; }
+.brow.profit .brow-val { color: var(--teal); }
+.brow.profit .brow-pct { color: var(--teal); }
+.brow.revenue-row .brow-val { color: var(--blue); font-size: 13px; font-weight: 700; }
+.brow.section-hd { background: var(--ink); padding: 6px 24px; }
+.brow.section-hd .brow-lbl { color: #8a7a6a; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-family: var(--mono); }
+
+/* Insight */
+.insight { border-radius: 10px; padding: 16px 20px; font-size: 13px; line-height: 1.7; display: none; }
 .insight.show { display: block; }
 .insight.warn { background: #fff8e6; border: 1px solid #e8c84a; border-left: 4px solid var(--gold); color: #5a3e00; }
 .insight.good { background: #edf8f3; border: 1px solid #70d4a0; border-left: 4px solid var(--teal); color: #0a3020; }
+.insight.info { background: #f0eaf8; border: 1px solid #b89ad4; border-left: 4px solid var(--purple); color: #2a0a4a; }
 .insight strong { font-weight: 600; }
 
-/* Tag mode */
-.mode-tag {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--mono);
-  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 4px;
-  background: rgba(255,255,255,0.08);
-  color: #a09080;
-  margin-bottom: 8px;
-}
+/* Mode tag */
+.mode-tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.08); color: #a09080; margin-bottom: 8px; }
+
+/* Floor price strip */
+.floor-strip { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px 16px; margin-bottom: 20px; }
+.floor-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #7a6a58; }
+.floor-val { font-family: var(--mono); font-size: 14px; color: #ffb070; font-weight: 500; }
+.floor-note { font-size: 10px; color: #6a5a48; }
 
 /* Responsive */
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .app { grid-template-columns: 1fr; }
   .sidebar { position: static; height: auto; }
   .metrics { grid-template-columns: 1fr 1fr; }
   .masthead { padding: 24px; }
   .main { padding: 24px 20px 60px; }
+  .brow { grid-template-columns: 1fr auto 80px 44px; gap: 8px; padding: 10px 16px; }
 }
 
-/* Animate */
 @keyframes rise { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
 .main > * { animation: rise 0.25s ease both; }
 </style>
@@ -417,9 +228,9 @@ input[type=range]::-webkit-slider-thumb {
       <div class="masthead-kicker">Baseline Pricing Engine · 2026</div>
       <h1>Harga Per Jam<br><em>per Peserta</em></h1>
     </div>
-    <div class="masthead-tag">ver 2.0<br>Training Calc<br>IDS</div>
+    <div class="masthead-tag">ver 3.0<br>Training Calc<br>IDS</div>
   </div>
-  <p class="masthead-desc">Hitung harga jual per jam berdasarkan komponen biaya aktual — pengajar, overhead, dan marketing — untuk mencapai target gross margin yang Anda tentukan.</p>
+  <p class="masthead-desc">Hitung harga jual per jam berdasarkan komponen biaya aktual. Setiap baris menampilkan bobot persentase terhadap total revenue untuk transparansi penuh.</p>
   <div class="masthead-formula">
     Harga/jam = DirectCost/jam ÷ <span>(1 − Indirect% − TargetGM%)</span>
   </div>
@@ -441,19 +252,20 @@ input[type=range]::-webkit-slider-thumb {
           <option value="corp-online">Corporate — Online</option>
           <option value="corp-offline">Corporate — Offline</option>
           <option value="academy-retail">Short Course Retail (Academy)</option>
+          <option value="new-program">✦ Program Baru (Custom)</option>
         </select>
       </div>
     </div>
 
-    <!-- Tier pengajar (private) -->
+    <!-- Tier pengajar -->
     <div class="field" id="field-tier">
       <div class="field-label">Tier Pengajar</div>
       <div class="sel-wrap">
-        <select id="sel-tier" onchange="recalc()">
+        <select id="sel-tier" onchange="onTierChange()">
           <option value="150000">Junior — Rp 150.000/jam</option>
           <option value="200000" selected>Mid — Rp 200.000/jam</option>
           <option value="300000">Senior — Rp 300.000/jam</option>
-          <option value="0">Custom (isi manual)</option>
+          <option value="0">Custom (isi manual di bawah)</option>
         </select>
       </div>
     </div>
@@ -466,18 +278,11 @@ input[type=range]::-webkit-slider-thumb {
           <div><span class="slider-num" id="jam-val">8</span><span class="slider-unit">jam</span></div>
         </div>
         <input type="range" id="slider-jam" min="1" max="40" value="8" oninput="onJamChange(this.value)">
-        <div class="quick-pills" id="jam-pills">
-          <span class="pill" onclick="setJam(2)">2j</span>
-          <span class="pill" onclick="setJam(4)">4j</span>
-          <span class="pill on" onclick="setJam(8)">8j</span>
-          <span class="pill" onclick="setJam(16)">16j</span>
-          <span class="pill" onclick="setJam(24)">24j</span>
-          <span class="pill" onclick="setJam(36)">36j</span>
-        </div>
+        <div class="quick-pills" id="jam-pills"></div>
       </div>
     </div>
 
-    <!-- Peserta (corp & academy) -->
+    <!-- Peserta -->
     <div class="field" id="field-pax" style="display:none">
       <div class="field-label">Jumlah Peserta</div>
       <div class="slider-field">
@@ -489,7 +294,7 @@ input[type=range]::-webkit-slider-thumb {
       </div>
     </div>
 
-    <!-- Biaya langsung -->
+    <!-- Cost section (dynamic) -->
     <div class="cost-section" id="cost-section"></div>
 
     <!-- GM slider -->
@@ -503,7 +308,7 @@ input[type=range]::-webkit-slider-thumb {
       </div>
     </div>
 
-    <!-- PPN/PPH -->
+    <!-- Pajak -->
     <div>
       <div class="field-label" style="margin-bottom:8px">Pajak</div>
       <div class="cost-row">
@@ -516,65 +321,108 @@ input[type=range]::-webkit-slider-thumb {
     <div class="field">
       <div class="field-label">Indirect Cost Rate (%HPP)</div>
       <input type="number" id="inp-indirect" value="10" min="0" max="30" step="1" oninput="recalc()">
-      <div class="field-hint">Default 10% (Team Staff 8% + Admin 2%)</div>
+      <div class="field-hint">Default 10% = Staff Operasional 8% + Admin 2%</div>
     </div>
 
   </aside>
 
   <!-- ── MAIN ── -->
-  <main class="main" id="main-results">
-    <!-- Filled by JS -->
-  </main>
+  <main class="main" id="main-results"></main>
 
 </div>
 
 <script>
-// ─── CONFIG PER MODE ──────────────────────────────────────────────────────────
+// ─── MODES CONFIG ─────────────────────────────────────────────────────────────
 const MODES = {
   "private-online": {
     label: "Private · Online",
     hasTier: true, hasPax: false,
     defaultJam: 8,
-    overheadPerJam: { "Platform (Zoom/Meet)": 10000, "Admin & Komunikasi": 5000, "Kit Digital": 2000 },
-    fixedPerJam: {},
-    mktgMode: "pct_dpp", mktgVal: 0.10,
-    paxQuick: [], jamQuick: [2,4,6,8,12,16,24,36],
+    overheadPerJam: {
+      "Platform (Zoom/Meet)":   { val: 10000, note: "Biaya sewa platform per jam sesi" },
+      "Staff Operasional":      { val: 5000,  note: "Alokasi jam kerja staf koordinasi & komunikasi" },
+      "Kit Digital":            { val: 2000,  note: "Amortisasi modul PDF/slides per jam" },
+    },
+    fixedCost: {},
+    mktgMode: "pct_dpp", mktgPct: 10,
+    jamQuick: [2,4,6,8,12,16,24,36], paxQuick: [],
   },
   "private-offline": {
     label: "Private · Offline",
     hasTier: true, hasPax: false,
     defaultJam: 12,
-    overheadPerJam: { "Room Rent": 150000, "Equipment Rental": 75000, "Admin & Komunikasi": 5000, "Kit Fisik": 15000, "Transport Pengajar": 12500 },
-    fixedPerJam: {},
-    mktgMode: "pct_dpp", mktgVal: 0.10,
-    paxQuick: [], jamQuick: [4,8,12,16,24,36],
+    overheadPerJam: {
+      "Room Rent":              { val: 150000, note: "Sewa ruang kelas per jam" },
+      "Equipment Rental":       { val: 75000,  note: "Sewa peralatan/laptop per jam" },
+      "Staff Operasional":      { val: 5000,   note: "Alokasi jam kerja staf koordinasi & koordinasi lapangan" },
+      "Kit Fisik":              { val: 15000,  note: "Amortisasi buku, modul cetak, ATK per jam" },
+      "Transport Pengajar":     { val: 12500,  note: "Rp 100rb/hari ÷ 8 jam efektif" },
+    },
+    fixedCost: {},
+    mktgMode: "pct_dpp", mktgPct: 10,
+    jamQuick: [4,8,12,16,24,36], paxQuick: [],
   },
   "corp-online": {
     label: "Corporate · Online",
     hasTier: true, hasPax: true,
     defaultJam: 8, defaultPax: 15,
-    overheadPerJam: { "Platform (Zoom/Meet)": 10000, "Admin & Komunikasi": 5000, "Kit Digital": 2000 },
-    fixedCost: { "Marketing/program": 1500000, "Moderator/program": 500000 },
+    overheadPerJam: {
+      "Platform (Zoom/Meet)":   { val: 10000, note: "Biaya platform per jam" },
+      "Staff Operasional":      { val: 5000,  note: "Alokasi staf koordinasi & follow-up klien" },
+      "Kit Digital":            { val: 2000,  note: "Materi digital per jam" },
+    },
+    fixedCost: {
+      "Marketing/program":      { val: 1500000, note: "Biaya promosi & proposal per program" },
+      "Moderator/program":      { val: 500000,  note: "Honor moderator satu program" },
+    },
     mktgMode: "none",
-    paxQuick: [5,10,15,20,25], jamQuick: [4,6,8,16,24],
+    jamQuick: [4,6,8,16,24], paxQuick: [5,10,15,20,25],
   },
   "corp-offline": {
     label: "Corporate · Offline",
     hasTier: true, hasPax: true,
     defaultJam: 8, defaultPax: 15,
-    overheadPerJam: { "Room Rent": 150000, "Equipment Rental": 75000, "Admin & Komunikasi": 5000, "Kit Fisik": 15000, "Transport Pengajar": 12500 },
-    fixedCost: { "Marketing/program": 2000000, "Moderator/program": 500000, "Transportasi (PP)": 5000000, "Akomodasi": 1200000 },
+    overheadPerJam: {
+      "Room Rent":              { val: 150000, note: "Sewa ruang kelas per jam" },
+      "Equipment Rental":       { val: 75000,  note: "Sewa alat per jam" },
+      "Staff Operasional":      { val: 5000,   note: "Alokasi staf koordinasi lapangan & klien" },
+      "Kit Fisik":              { val: 15000,  note: "Materi cetak, ATK per jam" },
+      "Transport Pengajar":     { val: 12500,  note: "Rp 100rb/hari ÷ 8 jam" },
+    },
+    fixedCost: {
+      "Marketing/program":      { val: 2000000, note: "Biaya promosi & proposal" },
+      "Moderator/program":      { val: 500000,  note: "Honor moderator" },
+      "Transportasi PP":        { val: 5000000, note: "Tiket pesawat/transport pulang-pergi" },
+      "Akomodasi":              { val: 1200000, note: "Hotel 2 malam × Rp 600rb" },
+    },
     mktgMode: "none",
-    paxQuick: [5,10,15,20], jamQuick: [4,6,8,16],
+    jamQuick: [4,6,8,16], paxQuick: [5,10,15,20],
   },
   "academy-retail": {
     label: "Short Course · Retail",
     hasTier: false, hasPax: true,
     defaultJam: 8, defaultPax: 50,
-    overheadPerJam: { "Platform (Zoom/Meet)": 10000, "Admin & Komunikasi": 5000 },
-    fixedCost: { "Pengajar/program": 2000000, "Digital Marketing": 2500000, "Webinar Ads": 700000 },
+    overheadPerJam: {
+      "Platform (Zoom/Meet)":   { val: 10000, note: "Platform per jam sesi" },
+      "Staff Operasional":      { val: 5000,  note: "Alokasi staf registrasi & support peserta" },
+    },
+    fixedCost: {
+      "Pengajar/program":       { val: 2000000, note: "Honor trainer satu batch" },
+      "Digital Marketing":      { val: 2500000, note: "Iklan sosmed, content creation" },
+      "Webinar Ads":            { val: 700000,  note: "Boosting & promotion material" },
+    },
     mktgMode: "none",
-    paxQuick: [20,30,50,80,100], jamQuick: [4,6,8,12],
+    jamQuick: [4,6,8,12], paxQuick: [20,30,50,80,100],
+  },
+  "new-program": {
+    label: "Program Baru · Custom",
+    hasTier: true, hasPax: true,
+    defaultJam: 8, defaultPax: 10,
+    overheadPerJam: {},
+    fixedCost: {},
+    mktgMode: "pct_dpp", mktgPct: 10,
+    jamQuick: [2,4,6,8,12,16,24], paxQuick: [1,3,5,10,15,20],
+    isNew: true,
   },
 };
 
@@ -583,35 +431,34 @@ let S = {
   mode: "private-online",
   tierRate: 200000,
   jam: 8, pax: 15,
-  gm: 60, ppn: 11, pph: 2,
-  indirectRate: 10,
-  overrides: {},  // user-edited cost values
-  fixedOverrides: {},
+  gm: 60, ppn: 11, pph: 2, indirectRate: 10,
+  overrides: {}, fixedOverrides: {},
+  // new-program dynamic items
+  newItems: [],          // [{label, value, type: 'per_jam'|'fixed'|'per_pax_jam'}]
+  newItemCounter: 0,
 };
 
-// ─── INIT ─────────────────────────────────────────────────────────────────────
+// ─── MODE CHANGE ──────────────────────────────────────────────────────────────
 function onModeChange() {
   S.mode = document.getElementById("sel-mode").value;
   S.overrides = {}; S.fixedOverrides = {};
+  if (S.mode === "new-program") S.newItems = [];
+
   const cfg = MODES[S.mode];
 
-  // Tier visibility
   document.getElementById("field-tier").style.display = cfg.hasTier ? "flex" : "none";
 
-  // Pax slider
   const paxField = document.getElementById("field-pax");
   paxField.style.display = cfg.hasPax ? "flex" : "none";
   if (cfg.hasPax) {
     S.pax = cfg.defaultPax || 15;
-    document.getElementById("slider-pax").value = S.pax;
+    const sl = document.getElementById("slider-pax");
+    const [mn,mx] = S.mode === "academy-retail" ? [10,200] : S.mode === "new-program" ? [1,100] : [3,50];
+    sl.min = mn; sl.max = mx; sl.value = S.pax;
     document.getElementById("pax-val").textContent = S.pax;
-    const [pmin, pmax] = S.mode === "academy-retail" ? [10,200] : [3,50];
-    document.getElementById("slider-pax").min = pmin;
-    document.getElementById("slider-pax").max = pmax;
     renderPaxPills(cfg.paxQuick);
   }
 
-  // Jam
   S.jam = cfg.defaultJam || 8;
   document.getElementById("slider-jam").value = S.jam;
   document.getElementById("jam-val").textContent = S.jam;
@@ -621,83 +468,129 @@ function onModeChange() {
   recalc();
 }
 
-function renderPaxPills(quick) {
-  document.getElementById("pax-pills").innerHTML = quick.map(n =>
-    `<span class="pill${S.pax==n?' on':''}" onclick="setPax(${n})">${n}</span>`
-  ).join("");
+function renderJamPills(q) {
+  document.getElementById("jam-pills").innerHTML = q.map(n =>
+    `<span class="pill${S.jam==n?' on':''}" onclick="setJam(${n})">${n}j</span>`).join("");
 }
-function renderJamPills(quick) {
-  document.getElementById("jam-pills").innerHTML = quick.map(n =>
-    `<span class="pill${S.jam==n?' on':''}" onclick="setJam(${n})">${n}j</span>`
-  ).join("");
+function renderPaxPills(q) {
+  document.getElementById("pax-pills").innerHTML = q.map(n =>
+    `<span class="pill${S.pax==n?' on':''}" onclick="setPax(${n})">${n}</span>`).join("");
 }
 
 function renderCostSection(cfg) {
   const sec = document.getElementById("cost-section");
   let html = "";
 
-  // Overhead per jam
-  if (Object.keys(cfg.overheadPerJam).length) {
-    html += `<div class="cost-sec-title">Overhead / Jam</div><div class="cost-row">`;
-    for (const [k, v] of Object.entries(cfg.overheadPerJam)) {
-      const id = `ov-${k.replace(/\W+/g,'_')}`;
-      html += `<div class="cost-item"><label>${k}</label>
-        <input type="number" id="${id}" value="${S.overrides[k]??v}" step="5000" oninput="S.overrides['${k}']=parseFloat(this.value)||0;recalc()">
+  if (cfg.isNew) {
+    // Dynamic new-program builder
+    html += `<div class="cost-sec-title">Komponen Biaya Program</div>`;
+    html += `<div class="new-items-list" id="new-items-list">`;
+    S.newItems.forEach((item, i) => {
+      html += renderNewItemRow(item, i);
+    });
+    html += `</div>`;
+    html += `<div style="display:flex;gap:6px;margin-top:6px">
+      <button class="add-btn" onclick="addNewItem('per_jam')" style="flex:1">+ /jam</button>
+      <button class="add-btn" onclick="addNewItem('fixed')" style="flex:1">+ Tetap</button>
+      <button class="add-btn" onclick="addNewItem('per_pax')" style="flex:1">+ /pax</button>
+    </div>`;
+    html += `<div class="field-hint" style="margin-top:4px">
+      <strong>/jam</strong> = biaya per jam program &nbsp;·&nbsp;
+      <strong>Tetap</strong> = biaya per program (fixed) &nbsp;·&nbsp;
+      <strong>/pax</strong> = biaya per peserta (kit, dll)
+    </div>`;
+  } else {
+    // Overhead per jam
+    if (Object.keys(cfg.overheadPerJam).length) {
+      html += `<div class="cost-sec-title">Overhead / Jam</div><div class="cost-row">`;
+      for (const [k, obj] of Object.entries(cfg.overheadPerJam)) {
+        const v = S.overrides[k] !== undefined ? S.overrides[k] : obj.val;
+        const safeK = k.replace(/['"]/g,'');
+        html += `<div class="cost-item" title="${obj.note}">
+          <label>${k}</label>
+          <input type="number" value="${v}" step="5000"
+            oninput="S.overrides['${safeK}']=parseFloat(this.value)||0;recalc()">
+        </div>`;
+      }
+      html += `</div>`;
+    }
+
+    // Fixed costs
+    if (cfg.fixedCost && Object.keys(cfg.fixedCost).length) {
+      html += `<div class="cost-sec-title">Biaya Tetap / Program</div><div class="cost-row">`;
+      for (const [k, obj] of Object.entries(cfg.fixedCost)) {
+        const v = S.fixedOverrides[k] !== undefined ? S.fixedOverrides[k] : obj.val;
+        const safeK = k.replace(/['"]/g,'');
+        html += `<div class="cost-item" title="${obj.note}">
+          <label>${k}</label>
+          <input type="number" value="${v}" step="50000"
+            oninput="S.fixedOverrides['${safeK}']=parseFloat(this.value)||0;recalc()">
+        </div>`;
+      }
+      html += `</div>`;
+    }
+
+    // Tier custom
+    if (cfg.hasTier) {
+      html += `<div class="cost-sec-title">Pengajar</div><div class="cost-row">
+        <div class="cost-item"><label>Rate / Jam (Rp)</label>
+          <input type="number" id="inp-tier-custom" value="${S.tierRate}" step="25000"
+            oninput="S.tierRate=parseFloat(this.value)||0;document.getElementById('sel-tier').value='0';recalc()">
+        </div>
       </div>`;
     }
-    html += `</div>`;
-  }
 
-  // Fixed costs (per program, not per jam)
-  if (cfg.fixedCost && Object.keys(cfg.fixedCost).length) {
-    html += `<div class="cost-sec-title">Biaya Tetap / Program</div><div class="cost-row">`;
-    for (const [k, v] of Object.entries(cfg.fixedCost)) {
-      const id = `fc-${k.replace(/\W+/g,'_')}`;
-      html += `<div class="cost-item"><label>${k}</label>
-        <input type="number" id="${id}" value="${S.fixedOverrides[k]??v}" step="50000" oninput="S.fixedOverrides['${k}']=parseFloat(this.value)||0;recalc()">
+    // Marketing % DPP
+    if (cfg.mktgMode === "pct_dpp") {
+      html += `<div class="cost-sec-title">Marketing</div><div class="cost-row">
+        <div class="cost-item"><label>% dari DPP</label>
+          <input type="number" id="inp-mktg-pct" value="${cfg.mktgPct||10}" min="0" max="30" step="1" oninput="recalc()">
+        </div>
       </div>`;
     }
-    html += `</div>`;
-  }
-
-  // Tier custom override
-  if (cfg.hasTier) {
-    html += `<div class="cost-sec-title">Pengajar</div><div class="cost-row">
-      <div class="cost-item"><label>Rate/jam (Rp)</label>
-        <input type="number" id="inp-tier-custom" value="${S.tierRate}" step="25000" oninput="S.tierRate=parseFloat(this.value)||0;document.getElementById('sel-tier').value='0';recalc()">
-      </div>
-    </div>`;
-  }
-
-  // Marketing if pct_dpp
-  if (cfg.mktgMode === "pct_dpp") {
-    html += `<div class="cost-sec-title">Marketing</div><div class="cost-row">
-      <div class="cost-item"><label>% dari DPP</label>
-        <input type="number" id="inp-mktg-pct" value="${(cfg.mktgVal*100).toFixed(0)}" min="0" max="30" step="1" oninput="recalc()">
-      </div>
-    </div>`;
   }
 
   sec.innerHTML = html;
 }
 
+// ─── NEW PROGRAM ITEMS ────────────────────────────────────────────────────────
+function renderNewItemRow(item, idx) {
+  const typeLabel = item.type === 'per_jam' ? '/jam' : item.type === 'fixed' ? 'tetap' : '/pax';
+  return `<div class="new-item-row" id="ni-row-${idx}">
+    <input type="text" placeholder="Nama biaya…" value="${item.label}"
+      oninput="S.newItems[${idx}].label=this.value;recalc()">
+    <span class="new-item-type">${typeLabel}</span>
+    <input type="number" value="${item.value}" step="10000" min="0"
+      oninput="S.newItems[${idx}].value=parseFloat(this.value)||0;recalc()">
+    <button class="del-btn" onclick="removeNewItem(${idx})">✕</button>
+  </div>`;
+}
+
+function addNewItem(type) {
+  const defaults = { per_jam: 50000, fixed: 500000, per_pax: 80000 };
+  const labels = { per_jam: "Overhead/jam", fixed: "Biaya tetap", per_pax: "Kit/peserta" };
+  S.newItems.push({ label: labels[type], value: defaults[type], type });
+  renderCostSection(MODES[S.mode]);
+  recalc();
+}
+
+function removeNewItem(idx) {
+  S.newItems.splice(idx, 1);
+  renderCostSection(MODES[S.mode]);
+  recalc();
+}
+
 // ─── EVENTS ───────────────────────────────────────────────────────────────────
-function onJamChange(v) { S.jam=parseInt(v); document.getElementById("jam-val").textContent=v; updateJamPills(); recalc(); }
-function setJam(n) { S.jam=n; document.getElementById("slider-jam").value=n; document.getElementById("jam-val").textContent=n; updateJamPills(); recalc(); }
-function updateJamPills() {
-  document.querySelectorAll("#jam-pills .pill").forEach(p => {
-    p.classList.toggle("on", parseInt(p.textContent)===S.jam);
+function onJamChange(v) { S.jam=parseInt(v); document.getElementById("jam-val").textContent=v; syncPills("jam-pills", v, true); recalc(); }
+function setJam(n) { S.jam=n; document.getElementById("slider-jam").value=n; document.getElementById("jam-val").textContent=n; syncPills("jam-pills",n,true); recalc(); }
+function onPaxChange(v) { S.pax=parseInt(v); document.getElementById("pax-val").textContent=v; syncPills("pax-pills",v,false); recalc(); }
+function setPax(n) { S.pax=n; document.getElementById("slider-pax").value=n; document.getElementById("pax-val").textContent=n; syncPills("pax-pills",n,false); recalc(); }
+function syncPills(id, val, isJam) {
+  document.querySelectorAll(`#${id} .pill`).forEach(p => {
+    const n = isJam ? parseInt(p.textContent) : parseInt(p.textContent);
+    p.classList.toggle("on", n===parseInt(val));
   });
 }
-
-function onPaxChange(v) { S.pax=parseInt(v); document.getElementById("pax-val").textContent=v; updatePaxPills(); recalc(); }
-function setPax(n) { S.pax=n; document.getElementById("slider-pax").value=n; document.getElementById("pax-val").textContent=n; updatePaxPills(); recalc(); }
-function updatePaxPills() {
-  document.querySelectorAll("#pax-pills .pill").forEach(p => {
-    p.classList.toggle("on", parseInt(p.textContent)===S.pax);
-  });
-}
-
 function onGmChange(v) {
   S.gm=parseInt(v);
   const el = document.getElementById("gm-num");
@@ -705,16 +598,15 @@ function onGmChange(v) {
   el.className = "slider-num " + (v>=60?"gm-high":v>=45?"gm-mid":"gm-low");
   recalc();
 }
-
-document.getElementById("sel-tier").addEventListener("change", function() {
-  const v = parseFloat(this.value);
-  if (v > 0) { S.tierRate = v; const ci = document.getElementById("inp-tier-custom"); if(ci) ci.value = v; }
+function onTierChange() {
+  const v = parseFloat(document.getElementById("sel-tier").value);
+  if (v > 0) { S.tierRate = v; const ci = document.getElementById("inp-tier-custom"); if(ci) ci.value=v; }
   recalc();
-});
+}
 
 // ─── CALCULATION ──────────────────────────────────────────────────────────────
 function recalc() {
-  S.gm = parseInt(document.getElementById("slider-gm").value);
+  S.gm  = parseInt(document.getElementById("slider-gm").value);
   S.ppn = parseFloat(document.getElementById("inp-ppn").value)||11;
   S.pph = parseFloat(document.getElementById("inp-pph").value)||2;
   S.indirectRate = parseFloat(document.getElementById("inp-indirect").value)||10;
@@ -726,114 +618,166 @@ function recalc() {
 
   if (factor <= 0.01) {
     document.getElementById("main-results").innerHTML =
-      `<div class="insight warn show">⚠️ Target GM terlalu tinggi untuk parameter ini. Kurangi target GM atau periksa rate indirect cost.</div>`;
+      `<div class="insight warn show">⚠️ Target GM terlalu tinggi. Kurangi target atau indirect rate.</div>`;
     return;
   }
 
-  // ── Overhead per jam ──
-  const ovPerJam = Object.entries(cfg.overheadPerJam).reduce((s,[k,v]) => {
-    return s + (S.overrides[k] !== undefined ? S.overrides[k] : v);
-  }, 0);
+  // ── Collect cost items ──
+  const items = []; // {label, valPerJamPerPax, dot, note}
+  const pax = cfg.hasPax ? S.pax : 1;
 
-  // ── Fixed costs (per program → per jam per pax) ──
-  let fixedPerJamPerPax = 0;
-  if (cfg.fixedCost) {
-    const totalFixed = Object.entries(cfg.fixedCost).reduce((s,[k,v]) => {
-      return s + (S.fixedOverrides[k] !== undefined ? S.fixedOverrides[k] : v);
-    }, 0);
-    const pax = cfg.hasPax ? S.pax : 1;
-    fixedPerJamPerPax = totalFixed / pax / S.jam;
-  }
-
-  // ── Trainer per jam per pax ──
-  let trainerPerJamPerPax = 0;
+  // Trainer
   if (cfg.hasTier) {
-    const pax = cfg.hasPax ? S.pax : 1;
-    trainerPerJamPerPax = S.tierRate / pax;
+    items.push({ label: "Pengajar", valPerJamPerPax: S.tierRate / pax, dot: "#1a3d6b", note: `Rp ${S.tierRate.toLocaleString("id-ID")}/jam ÷ ${pax} pax` });
   }
-  // academy-retail: pengajar from fixedCost already, no tier
 
-  // ── Marketing (% DPP) ──
-  let directPerJamBeforeMktg = trainerPerJamPerPax + ovPerJam + fixedPerJamPerPax;
-  let mktgPerJamPerPax = 0;
-  if (cfg.mktgMode === "pct_dpp") {
-    const mktgPct = parseFloat(document.getElementById("inp-mktg-pct")?.value||10)/100;
-    // mktg = mktgPct × DPP = mktgPct × Revenue/ppnF
-    // Revenue = (direct + mktg) / factor
-    // mktg = mktgPct/ppnF × Revenue = mktgPct/ppnF × (direct+mktg)/factor
-    // mktg × factor = mktgPct/ppnF × (direct + mktg)
-    // mktg × factor - mktg × mktgPct/ppnF = direct × mktgPct/ppnF
-    // mktg × (factor - mktgPct/ppnF) = direct × mktgPct/ppnF
-    const mktgFactor = factor - mktgPct/ppnF;
-    if (mktgFactor > 0.001) {
-      mktgPerJamPerPax = directPerJamBeforeMktg * (mktgPct/ppnF) / mktgFactor - directPerJamBeforeMktg;
-      // simpler: add marketing as % of revenue; iterate once
-      mktgPerJamPerPax = directPerJamBeforeMktg * mktgPct / (ppnF * factor - mktgPct);
+  // Overhead per jam (shared across all pax → divide by pax only for corp)
+  for (const [k, obj] of Object.entries(cfg.overheadPerJam)) {
+    const v = S.overrides[k] !== undefined ? S.overrides[k] : obj.val;
+    // overhead per jam is already per-slot; for corp divide by pax
+    const perJamPerPax = cfg.hasPax ? v / pax : v;
+    items.push({ label: k, valPerJamPerPax: perJamPerPax, dot: "#7a6a58", note: obj.note });
+  }
+
+  // Fixed costs
+  if (cfg.fixedCost) {
+    for (const [k, obj] of Object.entries(cfg.fixedCost)) {
+      const v = S.fixedOverrides[k] !== undefined ? S.fixedOverrides[k] : obj.val;
+      items.push({ label: `${k}`, valPerJamPerPax: v / pax / S.jam, dot: "#9a7a58", note: obj.note + ` → ÷${pax}pax÷${S.jam}jam` });
     }
   }
 
-  const directPerJamPerPax = directPerJamBeforeMktg + mktgPerJamPerPax;
-  const revPerJamPerPax = directPerJamPerPax / factor;
+  // New-program custom items
+  if (cfg.isNew) {
+    for (const ni of S.newItems) {
+      let vPJPP = 0;
+      if (ni.type === "per_jam")   vPJPP = ni.value / pax;
+      if (ni.type === "fixed")     vPJPP = ni.value / pax / S.jam;
+      if (ni.type === "per_pax")   vPJPP = ni.value / S.jam;
+      const typeStr = ni.type==="per_jam"?`/jam÷${pax}pax` : ni.type==="fixed"?`tetap÷${pax}pax÷${S.jam}j` : `/pax÷${S.jam}j`;
+      items.push({ label: ni.label||"(tanpa nama)", valPerJamPerPax: vPJPP, dot: "#5a2d82", note: typeStr });
+    }
+  }
 
-  // Round to sensible
+  // Marketing % DPP (circular solve)
+  let mktgPerJamPerPax = 0;
+  let mktgNote = "";
+  if (cfg.mktgMode === "pct_dpp") {
+    const mktgPctEl = document.getElementById("inp-mktg-pct");
+    const mktgPct = (parseFloat(mktgPctEl?.value)||10) / 100;
+    const directBase = items.reduce((s,i) => s+i.valPerJamPerPax, 0);
+    mktgPerJamPerPax = directBase * mktgPct / (ppnF * factor - mktgPct);
+    if (mktgPerJamPerPax > 0) {
+      mktgNote = `${(mktgPct*100).toFixed(0)}% × DPP (proporsional harga jual)`;
+      items.push({ label: "Marketing", valPerJamPerPax: mktgPerJamPerPax, dot: "#b83020", note: mktgNote });
+    }
+  }
+
+  // Total direct
+  const directPerJamPerPax = items.reduce((s,i) => s+i.valPerJamPerPax, 0);
+  const revPerJamRaw = directPerJamPerPax / factor;
+
+  // Round
   let roundTo = 5000;
-  if (revPerJamPerPax < 20000) roundTo = 1000;
-  if (revPerJamPerPax > 500000) roundTo = 10000;
-  if (revPerJamPerPax > 2000000) roundTo = 50000;
-  const recPerJam = Math.ceil(revPerJamPerPax / roundTo) * roundTo;
+  if (revPerJamRaw < 20000)   roundTo = 1000;
+  if (revPerJamRaw > 500000)  roundTo = 10000;
+  if (revPerJamRaw > 2000000) roundTo = 50000;
+  const recPerJam     = Math.ceil(revPerJamRaw / roundTo) * roundTo;
   const recPerProgram = recPerJam * S.jam;
 
-  // Recompute GM with rounded
-  const hppPerJam = recPerJam / ppnF;
+  // Recompute with rounded revenue
+  const hppPerJam     = recPerJam / ppnF;
   const indirectPerJam = hppPerJam * (S.indirectRate/100);
   const totalCostPerJam = directPerJamPerPax + indirectPerJam;
   const grossProfitPerJam = recPerJam - totalCostPerJam;
   const actualGm = grossProfitPerJam / recPerJam;
-  const nettProfitPerJam = grossProfitPerJam * 0.98; // 2% sales commission
-  const paxLabel = cfg.hasPax ? `${S.pax} peserta` : "1 peserta";
+  const nettProfitPerJam = grossProfitPerJam * 0.98;
 
-  // GM colour
+  // Floor price (GM 40%)
+  const floorFactor = 1 - indR - 0.40;
+  const floorPerJam = floorFactor > 0 ? Math.ceil((directPerJamPerPax / floorFactor) / roundTo) * roundTo : 0;
+
   const gmClass = actualGm >= 0.60 ? "g" : actualGm >= 0.45 ? "a" : "r";
+  const paxLabel = cfg.hasPax ? `${pax} peserta` : "1 peserta";
 
-  // Breakdown items
-  const brows = [];
-  if (cfg.hasTier) {
-    const pax = cfg.hasPax ? S.pax : 1;
-    brows.push({ lbl:"Pengajar/jam/pax", val: trainerPerJamPerPax, dot:"#1a3d6b" });
-  }
-  for (const [k,v] of Object.entries(cfg.overheadPerJam)) {
-    const val = S.overrides[k]!==undefined ? S.overrides[k] : v;
-    brows.push({ lbl:k, val, dot:"#7a6a58" });
-  }
-  if (cfg.fixedCost && cfg.hasPax) {
-    for (const [k,v] of Object.entries(cfg.fixedCost)) {
-      const val = S.fixedOverrides[k]!==undefined ? S.fixedOverrides[k] : v;
-      const perJamPerPax = val / S.pax / S.jam;
-      brows.push({ lbl:`${k} /jam/pax`, val: perJamPerPax, dot:"#9a7a58" });
-    }
-  }
-  if (mktgPerJamPerPax > 0) brows.push({ lbl:"Marketing (est.) /jam/pax", val: mktgPerJamPerPax, dot:"#b83020" });
-
-  const maxBar = recPerJam;
-  const fmt = n => "Rp " + Math.round(n).toLocaleString("id-ID");
+  const fmt    = n => "Rp " + Math.round(n).toLocaleString("id-ID");
   const fmtPct = n => (n*100).toFixed(1) + "%";
+  const pctOf  = v => recPerJam > 0 ? (v/recPerJam*100).toFixed(1)+"%" : "—";
+  const barW   = v => recPerJam > 0 ? Math.min((v/recPerJam*100),100).toFixed(1)+"%" : "0%";
 
-  // Insights
-  let insight = "";
-  if (S.mode === "corp-offline" && S.pax < 10) {
-    insight = `<div class="insight warn show">💡 <strong>Perhatian:</strong> Dengan ${S.pax} peserta offline, biaya logistik tetap (transport, akomodasi) mendominasi sehingga harga/jam/pax sangat tinggi. Rekomendasikan minimum <strong>10–15 peserta</strong> untuk efisiensi biaya onsite.</div>`;
-  } else if (S.mode === "academy-retail" && S.pax < 40) {
-    insight = `<div class="insight warn show">⚠️ <strong>Perhatian:</strong> Short course retail paling efisien di atas 50 peserta. Dengan ${S.pax} peserta, harga per program <strong>${fmt(recPerProgram)}</strong> mungkin tidak kompetitif di pasar. Pertimbangkan target minimum 50 peserta atau kurangi biaya marketing.</div>`;
-  } else if (actualGm > 0.70) {
-    insight = `<div class="insight good show">✅ <strong>Margin kuat (${fmtPct(actualGm)}).</strong> Harga ini memberikan ruang untuk diskon kelompok, bundling paket, atau early-bird pricing tanpa mengorbankan profitabilitas.</div>`;
+  // ── BUILD BROW ROWS ──
+  function makeBrow(lbl, val, dot, cls="", barColor="#a09080", note="") {
+    const pct = pctOf(val);
+    const bw  = barW(val);
+    return `<div class="brow ${cls}" title="${note}">
+      <span class="brow-lbl"><span class="dot" style="background:${dot}"></span>${lbl}</span>
+      <span class="brow-val">${fmt(val)}</span>
+      <div class="brow-bar-wrap"><div class="brow-bar-fill" style="width:${bw};background:${barColor}"></div></div>
+      <span class="brow-pct">${pct}</span>
+    </div>`;
+  }
+  function makeSectionHd(txt) {
+    return `<div class="brow section-hd" style="grid-template-columns:1fr">
+      <span class="brow-lbl">${txt}</span>
+    </div>`;
   }
 
+  let browsHtml = makeSectionHd("Komponen Direct Cost");
+  items.forEach(it => {
+    browsHtml += makeBrow(it.label, it.valPerJamPerPax, it.dot, "", it.dot, it.note||"");
+  });
+  browsHtml += makeBrow("Total Direct Cost / jam / pax", directPerJamPerPax, "#b83020", "subtotal", "#b83020");
+
+  browsHtml += makeSectionHd("Indirect Cost (Overhead Bisnis)");
+  const staffPerJam = hppPerJam * 0.08;
+  const adminPerJam = hppPerJam * 0.02;
+  browsHtml += makeBrow(`Staff Operasional (8% HPP)`, staffPerJam, "#c98a10", "", "#c98a10", "Gaji staf tetap, koordinasi program, project management");
+  browsHtml += makeBrow(`Admin & Overhead (2% HPP)`, adminPerJam, "#e0b060", "", "#e0b060", "Biaya administrasi, tools, software, sewa kantor");
+  browsHtml += makeBrow(`Total Indirect / jam`, indirectPerJam, "#c98a10", "subtotal", "#c98a10");
+
+  browsHtml += makeSectionHd("Revenue & Profit");
+  browsHtml += makeBrow("Revenue / jam / pax (harga jual)", recPerJam, "#1a3d6b", "revenue-row", "#1a3d6b");
+  browsHtml += makeBrow(`Gross Profit / jam — ${fmtPct(actualGm)}`, grossProfitPerJam, "#1a6b5a", "profit", "#1a6b5a");
+  browsHtml += makeBrow(`HPP (Revenue ÷ 1.${String(S.ppn).padStart(2,"0")})`, hppPerJam, "#3a6060", "", "#3a6060", "Dasar Pengenaan Pajak");
+  browsHtml += makeBrow(`PPN ${S.ppn}%`, recPerJam - hppPerJam, "#6a8080", "", "#6a8080");
+  browsHtml += makeBrow(`PPH ${S.pph}% (dari HPP)`, hppPerJam * S.pph/100, "#6a8080", "", "#6a8080");
+  browsHtml += makeBrow(`Nett Profit / jam (stlh sales fee 2%)`, nettProfitPerJam, "#1a6b5a", "profit", "#1a6b5a");
+
+  // Insight
+  let insight = "";
+  if (cfg.isNew && S.newItems.length === 0) {
+    insight = `<div class="insight info show">✦ <strong>Program Baru:</strong> Tambahkan komponen biaya dengan tombol <em>+ /jam</em>, <em>+ Tetap</em>, atau <em>+ /pax</em> di sidebar kiri. Setelah semua biaya diisi, harga jual akan terhitung otomatis.</div>`;
+  } else if (S.mode === "corp-offline" && pax < 10) {
+    insight = `<div class="insight warn show">💡 <strong>Perhatian:</strong> Dengan ${pax} peserta offline, logistik tetap mendominasi → harga/jam/pax sangat tinggi. Rekomendasikan minimum <strong>10–15 peserta</strong>.</div>`;
+  } else if (S.mode === "academy-retail" && pax < 40) {
+    insight = `<div class="insight warn show">⚠️ Short course retail optimal di 50+ peserta. Saat ini ${pax} peserta → harga/program ${fmt(recPerProgram)} mungkin tidak kompetitif.</div>`;
+  } else if (actualGm > 0.70) {
+    insight = `<div class="insight good show">✅ <strong>Margin kuat (${fmtPct(actualGm)}).</strong> Ada ruang untuk diskon kelompok, bundling, atau early-bird tanpa mengorbankan profitabilitas.</div>`;
+  }
+
+  // ── RENDER ──
+  const isNew = cfg.isNew;
   document.getElementById("main-results").innerHTML = `
-    <div class="result-hero" data-mode="${cfg.label.split('·')[0].trim()}">
+
+    <div class="result-hero ${isNew?'new-prog':''}" data-mode="${cfg.label.split('·')[0].trim()}">
       <div class="mode-tag">${cfg.label}</div>
       <div class="result-label">Rekomendasi Harga Jual / Jam / Peserta</div>
-      <div class="result-price"><sup>Rp</sup>${Math.round(recPerJam).toLocaleString("id-ID")}<sub>/jam/pax</sub></div>
-      <div class="result-sub">Total <strong>${fmt(recPerProgram)}</strong>/pax untuk <strong>${S.jam} jam program</strong> · ${paxLabel}</div>
+      <div class="result-price">
+        <sup>Rp</sup>${Math.round(recPerJam).toLocaleString("id-ID")}<sub>/jam/pax</sub>
+      </div>
+      <div class="result-sub">
+        Total <strong>${fmt(recPerProgram)}</strong>/pax · <strong>${S.jam} jam</strong> · ${paxLabel}
+      </div>
+
+      ${floorPerJam > 0 ? `
+      <div class="floor-strip">
+        <div>
+          <div class="floor-lbl">Harga Lantai (Min. GM 40%)</div>
+          <div class="floor-note">Di bawah angka ini bisnis tidak sehat</div>
+        </div>
+        <div class="floor-val">${fmt(floorPerJam)}/jam</div>
+      </div>` : ""}
+
       <div class="metrics">
         <div class="metric"><div class="metric-lbl">Gross Margin</div><div class="metric-val ${gmClass}">${fmtPct(actualGm)}</div></div>
         <div class="metric"><div class="metric-lbl">Gross Profit/jam</div><div class="metric-val">${fmt(grossProfitPerJam)}</div></div>
@@ -843,70 +787,30 @@ function recalc() {
     </div>
 
     <div class="bar-card">
-      <div class="bar-card-title">Proporsi Biaya vs Revenue (per jam/pax)</div>
+      <div class="bar-card-title">Proporsi Biaya vs Revenue — per jam/pax</div>
       <div class="bars">
-        <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Revenue/jam</span><span class="bar-amt">${fmt(recPerJam)}</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#1a3d6b"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Direct Cost/jam</span><span class="bar-amt">${fmt(directPerJamPerPax)}</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:${(directPerJamPerPax/maxBar*100).toFixed(1)}%;background:#b83020"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Indirect Cost/jam</span><span class="bar-amt">${fmt(indirectPerJam)}</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:${(indirectPerJam/maxBar*100).toFixed(1)}%;background:#c98a10"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Gross Profit/jam</span><span class="bar-amt">${fmt(grossProfitPerJam)}</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:${(grossProfitPerJam/maxBar*100).toFixed(1)}%;background:#1a6b5a"></div></div>
-        </div>
+        ${[
+          { name:"Revenue/jam", val:recPerJam, color:"#1a3d6b" },
+          { name:"Direct Cost/jam", val:directPerJamPerPax, color:"#b83020" },
+          { name:"Indirect Cost/jam", val:indirectPerJam, color:"#c98a10" },
+          { name:"Gross Profit/jam", val:grossProfitPerJam, color:"#1a6b5a" },
+        ].map(b => `
+          <div class="bar-row">
+            <div class="bar-meta">
+              <span class="bar-name">${b.name}</span>
+              <span class="bar-amt">${fmt(b.val)} <span style="color:var(--ink3);font-size:10px">(${pctOf(b.val)})</span></span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:${barW(b.val)};background:${b.color}"></div></div>
+          </div>`).join("")}
       </div>
     </div>
 
     <div class="breakdown">
-      <div class="breakdown-head">Rincian Komponen Biaya / Jam / Peserta <span>semua angka per jam per peserta</span></div>
-      ${brows.map(b => `
-        <div class="brow">
-          <span class="brow-lbl"><span class="dot" style="background:${b.dot}"></span>${b.lbl}</span>
-          <span class="brow-val">${fmt(b.val)}</span>
-        </div>`).join("")}
-      <div class="brow subtotal">
-        <span class="brow-lbl">Total Direct Cost / jam / pax</span>
-        <span class="brow-val">${fmt(directPerJamPerPax)}</span>
+      <div class="breakdown-head">
+        Rincian Komponen Biaya / Jam / Peserta
+        <span>Hover baris untuk keterangan · % = proporsi dari harga jual</span>
       </div>
-      <div class="brow">
-        <span class="brow-lbl">HPP/jam (Revenue ÷ 1.${String(S.ppn).padStart(2,"0")})</span>
-        <span class="brow-val">${fmt(hppPerJam)}</span>
-      </div>
-      <div class="brow">
-        <span class="brow-lbl">Indirect Cost / jam (${S.indirectRate}% × HPP)</span>
-        <span class="brow-val">${fmt(indirectPerJam)}</span>
-      </div>
-      <div class="brow subtotal">
-        <span class="brow-lbl">Total Cost / jam / pax</span>
-        <span class="brow-val">${fmt(totalCostPerJam)}</span>
-      </div>
-      <div class="brow revenue-row">
-        <span class="brow-lbl">Revenue / jam / pax (harga jual)</span>
-        <span class="brow-val">${fmt(recPerJam)}</span>
-      </div>
-      <div class="brow profit">
-        <span class="brow-lbl">Gross Profit / jam (${fmtPct(actualGm)})</span>
-        <span class="brow-val">${fmt(grossProfitPerJam)}</span>
-      </div>
-      <div class="brow">
-        <span class="brow-lbl">PPH ${S.pph}% (dari HPP)</span>
-        <span class="brow-val">${fmt(hppPerJam * S.pph/100)}</span>
-      </div>
-      <div class="brow">
-        <span class="brow-lbl">PPN ${S.ppn}%</span>
-        <span class="brow-val">${fmt(recPerJam - hppPerJam)}</span>
-      </div>
-      <div class="brow profit">
-        <span class="brow-lbl">Nett Profit / jam (stlh sales fee 2%)</span>
-        <span class="brow-val">${fmt(nettProfitPerJam)}</span>
-      </div>
+      ${browsHtml}
     </div>
 
     ${insight}
